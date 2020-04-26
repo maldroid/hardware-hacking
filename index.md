@@ -40,3 +40,4 @@ The password is 5 characters long and CPU runs at 16 MHz, which makes brute-forc
 
 > *What's wrong with this code? How can having a physical access to the device make cracking the password easier?*
 
+[See the answer on the next page >>>](timing.md)
