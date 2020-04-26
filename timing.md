@@ -10,9 +10,14 @@ As you might've guessed from the title of this page the answer is: **timing atta
 `read buffer[0]` | `read buffer[0]`
 `compare two values` | `compare two values`
 `return false` | `i = 1`
+\- | `i < 5`
 \- | `read PASSWORD[1]`
 \- | `read buffer[1]`
 \- | `compare two values`
 \- | `return false`
 
-As you can see in the first case the `checkPass` `for` loop does only one iteration (since the first character is incorrect) and in the second case it does two (since the first character is correct, but the second one is incorrect).
+As you can see in the first case the `checkPass` `for` loop does only one iteration (since the first character is incorrect) and in the second case it does two (since the first character is correct, but the second one is incorrect). Can we detect this timing difference? Let's take a look!
+
+> Download this Logic data dump. Load it in Logic by clicking on "Options" (upper left corner) and then "Open capture / setup". Choose the file you downloaded.
+
+You should see a window similar to the one in the screenshot below.
