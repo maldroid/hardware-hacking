@@ -8,7 +8,7 @@ Our task is simple. We have an Arduino Uno board with a 16MHz CPU. We assume tha
 
 We have to write a password checking method which takes a string as an argument and returns `true` if the string matches a hardcoded 5 character password and `false` otherwise. The password is hardcoded instead of being hashed, but all the methods presented here are generic enough that they work in various configurations. 
 
-Our first try would probably be something like this:
+Our first try would probably be something like this (`loop` in Arduino is similar to `main` in regular C):
 
 ```
 String PASSWORD = "passw"
@@ -28,7 +28,8 @@ void loop() {
   Serial.readBytes(pass, PASSWORD.length());
   bool correct = checkPass(pass);
   if (correct) {
-    Serial.println("Password correct!"); Serial.flush(); exit(0);
+    Serial.println("Password correct!");
+    Serial.flush(); exit(0);
   } else {
     Serial.println("Incorrect password!");
   }
