@@ -38,5 +38,5 @@ void loop() {
 
 The password is 5 characters long and CPU runs at 16 MHz, which makes brute-forcing infeasible. So this code, theoreticaly, should work just fine. However, this course is all about hardware hacking this brings us to the first question...
 
-> *What's wrong with this code? How can having physical access to the device make cracking the password easier?*
+> *What's wrong with this code? How can having a physical access to the device make cracking the password easier?*
 
