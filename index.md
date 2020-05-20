@@ -36,7 +36,13 @@ void loop() {
 }
 ```
 
-The password is 5 characters long and CPU runs at 16 MHz, which makes brute-forcing infeasible. So this code, theoreticaly, should work just fine. However, this course is all about hardware hacking this brings us to the first question...
+Let's take a look at the code and figure out what it does. First it prints a password prompt and then tries to read as many bytes as the password length. Once it does that it runs the `checkPass` method. This method goes over the password byte by byte. If one of the bytes of the input doesn't match the actual password the method returns `false` and the `Incorrect password!` message is printed. If, on the other hand, every byte of the input matches the password the `checkPass` method returns `true` and we get the `Password correct!` message.
+
+The password is 5 characters long and CPU runs at 16 MHz, which makes brute-forcing infeasible, as it would take years. One password try takes approximately xxx xxxseconds. So in total we would get:
+
+<img src="https://render.githubusercontent.com/render/math?math=placeholder">
+
+So this code, theoreticaly, should work just fine. However, this course is all about hardware hacking this brings us to the first question...
 
 > *What's wrong with this code? How can having a physical access to the device make cracking the password easier?*
 
