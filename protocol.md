@@ -48,3 +48,21 @@ The blue boxes contain the ASCII character that Logic thinks is being sent and t
 As you can see, and you've probably noticed when we set up the analyser, the least significant bit is set first. It means that we have to read the number starting from the bit that is sent last. You can also see the start bit and the stop bit.
 
 The last thing left is: how do we know how long a "bit" is? You can see in our example that the transmission starts with the strat bit (low) and four zeros. This means that the line stays low for a very long time, but we don't know how many bits that is. This is when the "autobaud" algorithm comes useful.
+
+If we don't know the exact lenght of one bit (which is measured in a number of bits per second) we can guess it. The way this guessing algorithm works is very simple. First you assume that the first "low" time is one bit. Then you go to the next "low" period and, if it's shorter, you assume this is the length of one bit. So on, until you reach the end of the transmission.
+
+You can see the length of any "valley" if you just hover your mouse cursor over it. Let's hover it over one of the bits.
+
+![Bit lenght in seconds](assets/logic-bit-length.png)
+
+It shows that the lenght of that bit is 8.400 microseconds, which means that the speed of the transmission is:
+
+<img src="https://render.githubusercontent.com/render/math?math=1/ (8.4 \mu s) = 119,047 bps">
+
+If you now click on the gear next to the `Async serial` analyser and choose `Edit settings` you will see that Logic also guessed the same bit rate.
+
+![Autobaud guess](assets/logic-analyser-autobaud.png)
+
+Now that we now everything there is to know about the serial protocol (ok, not EVERYTHING, but more than we did) it's time to actually look at the password check time measurment (remember that part?)
+
+[Construct a timing attack >>>>](attack)
