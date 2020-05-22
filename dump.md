@@ -16,4 +16,4 @@ The main window contains two channels: channel 0 and channel 1. Channel 0 is con
 
 Sinc ethis is channel 1 it means that the transmission is coming from the board to the computer. If you remember our serial communication session you might've already guessed what this is. This is most likely the `Password:` prompt we get from the board asking us to enter the correct password. But how is this encoded? What do the squiggly lines actually mean? Well, for that you need to go to the next part!
 
-[Decoding the serial protocol](protocol)
+[Decoding the serial protocol >>>>](protocol)
