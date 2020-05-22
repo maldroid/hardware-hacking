@@ -22,11 +22,11 @@ So can we detect this timing difference if we have access to the hardware? Let's
 
 We will be using an Arduino Uno board, which uses an ATMega328 CPU, like the one pictured below.
 
-[picture]
+![ATMega328 CPU](assets/atmega328p-pu.jpg)
 
 The board also has some additional elements responsible for making sure that the power flow is stable (capacitors), that we can communicate with a computer (the USB socket) that we can power the board using external power source and so on. Picture below shows the main components of the board.
 
-[picture]
+![Annotated Arduino Uno board](assets/arduino_uno_annotated.jpg)
 
 The CPU can be programmed with our password checking routine using Arduino IDE. Once we paste the code we can compile it and upload it to the board. Then we just connect using a serial console to the board and we can see the password prompt, like the one below.
 
@@ -38,9 +38,9 @@ We now have access to the board, but how to measure the time it takes to validat
 
 Instead, we can use a logic analyser. Logic analyser is a piece of hardware which can intercept and record the digital communication from the board. ATMega328 CPU uses serial communication (as does USB) which means that there are two wires - one to send the data (TX) and one to receive the data (RX). These are exposed on the first two pins of the ATMega328 CPU.
 
-[picture]
+![Annotated ATMega CPU](assets/atmega_annotated.jpg)
 
-These pins are exposed on the board in the upper left corner. They are even convieniently signed with "RX" and "TX". This is the same data that is sent through USB to a serial terminal running on the computer. Let's connect logic analyser to these two pins and record the whole communication.
+These pins are exposed on the board in the upper left corner (see the pictures above). They are even convieniently signed with "RX" and "TX". This is the same data that is sent through USB to a serial terminal running on the computer. Let's connect logic analyser to these two pins and record the whole communication.
 
 
 [On to the Logic software to process our data dump! >>>>](dump)
