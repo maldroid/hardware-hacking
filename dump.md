@@ -1,4 +1,4 @@
-# Getting the data dump
+# Getting the data capture
 We will be using Saleae Logic Analyser in red (because red is faster than black, obviously). Since we want to inercept RX and TX we will connect channel 0 to RX and channel 1 to TX, as shwon below. We should also make sure to connect Arduino Uno ground to the logic analyser ground.
 
 ![Logic analyser connected to the Arduino board](assets/saleae_uno.jpg)
@@ -6,7 +6,7 @@ We will be using Saleae Logic Analyser in red (because red is faster than black,
 
 As you know form the code the protocol we are using is a serial (or UART) protocol. This means that the data is sent and received using two different wires (or channels). One - TX - is used to transmit the data from the board to our computer and the other one - RX - is used to end the data from the computer to the board where our password checking code runs. Let's record some communication. First we need to connect Arduino to our computer and send a password guess. This whole communication has to be recorded on our Logic Analyser.
 
-After the recording is done let's open it in the Logic software. [Download this dump of the communication](assets/password_try.logicdata) and open the Logic software. Then clikc on "Options" (upper right corner) and choose "Open capture / setup" and choose the downloaded file. Your screen should look similar to the screen below.
+After the recording is done let's open it in the Logic software. [Download this data capture of the communication](assets/password_try.logicdata) and open the Logic software. Then clikc on "Options" (upper right corner) and choose "Open capture / setup" and choose the downloaded file. Your screen should look similar to the screen below.
 
 ![Opened capture file](assets/logic_screenshot_0.png)
 
