@@ -13,11 +13,11 @@ We have to write a password checking method which takes a string as an argument 
 Our first try would probably be something like this (`loop` in Arduino is similar to `main` in regular C):
 
 ```
-String PASSWORD = "passw"
+String PASSWORD = "passw";
 
 bool checkPass(String buffer) {
   for (int i = 0; i < PASSWORD.length(); i++) {
-    if (buffer[i] != password[i]) {
+    if (buffer[i] != PASSWORD[i]) {
       return false;
     }
   }
