@@ -31,7 +31,20 @@ The board also has some additional elements responsible for making sure that the
 The CPU can be programmed with our password checking routine using Arduino IDE. Once we paste the code we can compile it and upload it to the board. Then we just connect using a serial console to the board and we can see the password prompt, like the one below.
 
 ```
-$ picocom ....
+$ picocom /dev/ttyACM0 -b 115200
+picocom v3.1
+
+port is        : /dev/ttyACM0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+...
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+Password:
 ```
 
 We now have access to the board, but how to measure the time it takes to validate the password? We can create a script which takes time mesurements before we send out a password guess and the time we receive the response, but there's so much latency in that communication that the results will be useless.
