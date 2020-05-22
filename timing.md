@@ -34,17 +34,13 @@ The CPU can be programmed with our password checking routine using Arduino IDE. 
 $ picocom ....
 ```
 
-We now have access to the board, but how to measure the time it takes to validate the password? We can create a script which takes time mesurements before we send out a password guess and the time we receive the response, but there's so much latency in that communication that the results will be useless. Instead, we can use a logic analyser. Logic analyser is a piece of hardware which can intercept and record the digital communication from the board. ATMega328 CPU uses serial communication (as does USB) which means that there are two wires - one to send the data (TX) and one to receive the data (RX). These are exposed on the first two pins of the ATMega328 CPU.
+We now have access to the board, but how to measure the time it takes to validate the password? We can create a script which takes time mesurements before we send out a password guess and the time we receive the response, but there's so much latency in that communication that the results will be useless.
+
+Instead, we can use a logic analyser. Logic analyser is a piece of hardware which can intercept and record the digital communication from the board. ATMega328 CPU uses serial communication (as does USB) which means that there are two wires - one to send the data (TX) and one to receive the data (RX). These are exposed on the first two pins of the ATMega328 CPU.
 
 [picture]
 
+These pins are exposed on the board in the upper left corner. They are even convieniently signed with "RX" and "TX". This is the same data that is sent through USB to a serial terminal running on the computer. Let's connect logic analyser to these two pins and record the whole communication.
 
-On to the Logic software to process our data dump! >>>>
 
-> Download this Logic capture dump. Load it in Logic by clicking on "Options" (upper left corner) and then "Open capture / setup". Choose the file you downloaded.
-
-You should see a window similar to the one in the screenshot below.
-
-## Figuring out the protocol
-
-As you know form the code the protocol we are using is a serial (or UART) protocol. This means that the data is sent and received using two different wires (or channels). One - TX - is used to transmit the data from the board to our computer and the other one - RX - is used to end the data from the computer to the board where our password checking code runs. You can see how the connections work in the picture below.
+[On to the Logic software to process our data dump! >>>>](dump)
