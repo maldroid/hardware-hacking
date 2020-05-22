@@ -2,7 +2,7 @@
 
 There's a difference in time it takes to validate the password based on the number of characters that are correct. Take a look at step-by-step `checkPass` verification of two password tries below -- one with all characters incorrect and one with one correct character.
 
-`qqqqq` | `aqqqq`
+`xxxxx` | `pxxxx`
 ------------ | -------------
 `i = 0` | `i = 0`
 `i < 5` | `i < 5`
