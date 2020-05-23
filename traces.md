@@ -10,11 +10,11 @@ Now the question becomes: where is `checkPass`? We're looking for five loop iter
 
 Hopefully you can see all the 5 loop iterations (i.e. 5 same power traces). Now that you guessed where the for loop is (with a little bit of help) the question is: is there any difference between power traces where one of the characters is correct and the one above? For this we have to compare two screenshots of power traces from two different password guesses. You can do that in the Logic software, but I exported the data and created two overlapping charts so that the comparison is slightly easier.
 
-![Two power traces for two different password guesses](asstes/matplotlib-power-traces.png)
+![Two power traces for two different password guesses](assets/matplotlib-power-traces.png)
 
 The blue line shows the power trace without any correct password characters and the orange one shows a power trace for three correct characters. It may be hide to see the difference, so let's plot the difference between the power traces.
 
-![The difference between power traces](asstes/matplotlib-differences.png)
+![The difference between power traces](assets/matplotlib-differences.png)
 
 Now I hope you can clearly see that there are some small differences here and there, but there three pretty big peaks. If you look closely at the previous chart you can see that the orange line dips in the same three places. Take a look at different password guesses in the Logic capture and see if you can figure out how many of the first characters are right.
 
