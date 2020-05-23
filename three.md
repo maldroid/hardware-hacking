@@ -13,7 +13,11 @@ bool checkPass(String buffer) {
       result = false;
     }
   }
-  EEPROM.write(TRIES_ADDR, tries - 1);
+  if (result) {
+    EEPROM.write(TRIES_ADDR, 3);
+  } else {
+    EEPROM.write(TRIES_ADDR, tries - 1);
+  }
   return result;
 }
 ```
@@ -38,8 +42,24 @@ In our imperfect mental image we can imagine that the CPU would like to draw som
 
 In order to drop a voltage for a very small amount of time we will use a transistor, which is electronically operated switch. We will use a second Arduino board to control that transistor and very quickly turn the votage off and on in hopes that are target Arduino won't notice that.
 
-The circut looks a bit like this:
+The circut looks like this:
 
 ![Voltage fault injection circuit](assets/fault-injection-circuit.png)
 
+The transistor is responsible for switching the power on and off. Most of the time the power will be on (otherwise the CPU won't work) and the second Arduino board will turn it off for a very short time - few CPU cycles. Since we don't know or care how long a glitch (powering down the CPU) should be we are going to try different values in this very simple Arduino code:
 
+```
+void loop() {
+  int waste = 0;
+  for (int i = 0; i < offset ; i++) { waste++; }
+  digitalWrite(glitchPin, LOW);
+  for (int i = 0; i < glitchLength ; i++) { waste++; }
+  digitalWrite(glitchPin, HIGH);
+  delay(500);
+  glitchLength += 10;
+  if (glitchLength > 10000) {
+    glitchLength = 1;
+    offset *= 2;
+  }
+}
+```
