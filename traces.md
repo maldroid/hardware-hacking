@@ -18,7 +18,7 @@ The blue line shows the power trace without any correct password characters and 
 
 Now I hope you can clearly see that there are some small differences here and there, but there three pretty big peaks. If you look closely at the previous chart you can see that the orange line dips in the same three places. Take a look at different password guesses in the Logic capture and see if you can figure out how many of the first characters are right.
 
-This power analysis method is much more powerful than the timing attack. Just based on one guess not only you can figure out how many characters you got right, but you can also guess characters in the middle of the password!
+This power analysis method is much more powerful than the timing attack. Not only does it work where the timing attack doesn't, but also based on one guess you can figure out how many(!) characters you got right and you can also guess characters in the middle of the password!
 
 Seems like the only option is to limit the number of password guesses to, let's say, 3. Now the password check is secure, right? Let's see!
 
