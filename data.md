@@ -56,7 +56,7 @@ This code goes over every key and calculates the average value. Then it sorts al
 ```
 
 So, on average, the password starting with `p` took the longest time to validate. Is this really the first character of the password? Well, we can also imply that from the data we see. Let's take a look at the differences between the times it takes to validate different guesses:
-
+T
 Byte | Time to validate | Time difference 
 -----|------------------|-----------------
 112 | 58088 ns | ---
@@ -73,7 +73,7 @@ The remaining question is: how does that speed up the password brute-forcing?
 
 Brute-force: <img src="https://render.githubusercontent.com/render/math?math=256^5 = 1,099,511,627,776">
 
-Timing attack: <img src="https://render.githubusercontent.com/render/math?math=(256 \times 100)\times 5 = 128,000">
+Timing attack: <img src="https://render.githubusercontent.com/render/math?math=(256 * 100) * 5 = 128,000">
 
 So a timing attack is 8.5 million times faster. On Arduino Uno the whole attack from start until the end will take about 10 minutes.
 
