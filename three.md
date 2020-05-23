@@ -32,4 +32,14 @@ This means that there is a signle point of failure - if the execution of checkPa
 
 > This is a point in the training where most of the participants have either a very confused look or think I'm joking. It's fine if you had the same reaction, as the rest of this course deals with what can be described as magic.
 
-If we can somehow inject a fault and make the `checkPass` method believe that the password is correct we can unlock the board. We do not even have to know the password in order to do that.
+If we can somehow inject a fault and make the `checkPass` method believe that the password is correct we can unlock the board. We do not even have to know the password in order to do that. ATMega328 CPU, like all electronics, has a minimum operating voltage. It's unclear what happens if the voltage drops for a very, very small amount of time.
+
+In our imperfect mental image we can imagine that the CPU would like to draw some power to flip a bit, but we turn off the power supply for that very short moment and it's not able to do that. However, we turned the power for such a small amount of time that it didn't power down the CPU. It has entered an erroneous state. This is what we will try to attempt.
+
+In order to drop a voltage for a very small amount of time we will use a transistor, which is electronically operated switch. We will use a second Arduino board to control that transistor and very quickly turn the votage off and on in hopes that are target Arduino won't notice that.
+
+The circut looks a bit like this:
+
+![Voltage fault injection circuit](assets/fault-injection-circuit.png)
+
+
