@@ -49,7 +49,7 @@ Password:
 
 We now have access to the board, but how to measure the time it takes to validate the password? We can create a script which takes time mesurements before we send out a password guess and the time we receive the response, but there's so much latency in that communication that the results will be useless.
 
-Instead, we can use a logic analyser. Logic analyser is a piece of hardware which can intercept and record the digital communication from the board. ATMega328 CPU uses serial communication (as does USB) which means that there are two wires - one to send the data (TX) and one to receive the data (RX). These are exposed on the first two pins of the ATMega328 CPU.
+Instead, we can use a logic analyser from [Saleae](https://www.saleae.com/). Logic analyser is a piece of hardware which can intercept and record the digital communication from the board. ATMega328 CPU uses serial communication (as does USB) which means that there are two wires - one to send the data (TX) and one to receive the data (RX). These are exposed on the first two pins of the ATMega328 CPU.
 
 ![Annotated ATMega CPU](assets/atmega_annotated.jpg)
 
