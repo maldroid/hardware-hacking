@@ -1,7 +1,7 @@
 # How does a serial protocol work?
-As you already know serial protocol uses two channels to communicate - RX and TX. The data on both of these channels is encoded in the same way. As you've also noticed when the channel is idle (no data is being transmitted) the channel is set to high.
+As you already know the serial protocol uses two channels to communicate - RX and TX. The data on both of these channels is encoded in the same way. As you've also noticed when the channel is idle (i.e. no data is being transmitted) the channel is set to high.
 
-Serial protocol has several parameters which `picocom` presented to us when we've run the serial console:
+Serial protocol has several parameters which `picocom` presented to us when we run the serial console:
 
 ```
 $ picocom /dev/ttyACM0 -b 115200
@@ -26,9 +26,9 @@ The parameters that control the number of bits are called *D* (for "data bits"),
 
 * D = 8 (bits)
 * P = N (none - there is no parity bit)
-* S = 1 (there's one parity bit)
+* S = 1 (there's one stop bit)
 
-Although different serial protocol implementations may use different values. ATMega CPU is using the default values, which means that each frame will start with one start bit (low), then we will have 8 bits of data (low/high) and one stop bit (high).
+These are the most popular values, but different serial protocol implementations may use different values. ATMega CPU is using the default values, which means that each frame will start with one start bit (low), then we will have 8 bits of data (low/high) and one stop bit (high).
 
 The usual way to write the parameters is by separating them with slashes (e.g. `8/N/1` for the default values) or just writing them in the `DPS` order (e.g. `8N1`). The middle parameter (parity) is specified by a character relating to the error detection algorithm name, which means that there's no ambiguity.
 
@@ -41,21 +41,21 @@ Now the Channel 1 row should have blue boxes above the data transmission and som
 
 ![Decoded serial protocol](assets/logic-screenshot-decoded-serial.png)
 
-The blue boxes contain the ASCII character that Logic thinks is being sent and the dots signify the data bits. The annotated screenshot below shows how one serial protocol frame can be decoded.
+The blue box contains the ASCII character that Logic thinks is being sent and the dots signify the data bits. The annotated screenshot below shows how one serial protocol frame can be decoded.
 
 ![Decoded and annotated serial protocol](assets/logic-screenshot-decoded-serial-annotated.png)
 
-As you can see, and you've probably noticed when we set up the analyser, the least significant bit is set first. It means that we have to read the number starting from the bit that is sent last. You can also see the start bit and the stop bit.
+As you can see, and you've probably noticed when we set up the analyser, the least significant bit is sent first. It means that we have to read the number starting from the bit that is sent last. You can also see the start bit and the stop bit.
 
-The last thing left is: how do we know how long a "bit" is? You can see in our example that the transmission starts with the strat bit (low) and four zeros. This means that the line stays low for a very long time, but we don't know how many bits that is. This is when the "autobaud" algorithm comes useful.
+The last thing left is: how do we know how long a "bit" is? You can see in our example that the transmission starts with the start bit (low) and four zeros. This means that the line stays low for a very long time, but we don't know how many bits that is. This is where the "autobaud" algorithm comes useful.
 
-If we don't know the exact lenght of one bit (which is measured in a number of bits per second) we can guess it. The way this guessing algorithm works is very simple. First you assume that the first "low" time is one bit. Then you go to the next "low" period and, if it's shorter, you assume this is the length of one bit. So on, until you reach the end of the transmission.
+If we don't know the exact length of one bit (which is measured in a number of bits per second) we can guess it. The way this guessing algorithm works is very simple. First you assume that the first "low" time is one bit. Then you go to the next "low" period and, if it's shorter, you assume this is the length of one bit. So on, until you reach the end of the transmission.
 
 You can see the length of any "valley" if you just hover your mouse cursor over it. Let's hover it over one of the bits.
 
-![Bit lenght in seconds](assets/logic-bit-length.png)
+![Bit length in seconds](assets/logic-bit-length.png)
 
-It shows that the lenght of that bit is 8.400 microseconds, which means that the speed of the transmission is:
+It shows that the length of that bit is 8.400 microseconds, which means that the speed of the transmission is:
 
 <img src="https://render.githubusercontent.com/render/math?math=1/ (8.4 \mu s) = 119,047 bps">
 
@@ -63,6 +63,6 @@ If you now click on the gear next to the `Async serial` analyser and choose `Edi
 
 ![Autobaud guess](assets/logic-analyser-autobaud.png)
 
-Now that we now everything there is to know about the serial protocol (ok, not EVERYTHING, but more than we did) it's time to actually look at the password check time measurment (remember that part?)
+Now that we now everything there is to know about the serial protocol (ok, not EVERYTHING, but more than we did) it's time to actually look at the password check time measurement (remember that part?)
 
 [Construct a timing attack >>>>](attack)
