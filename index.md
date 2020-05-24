@@ -44,9 +44,9 @@ Let's take a look at the code and figure out what it does. First it prints a pas
 
 If, on the other hand, every byte of the input matches the password the `checkPass` method returns `true` and we get the `Password correct!` message.
 
-The password is 5 characters long and CPU runs at 16 MHz, which makes brute-forcing infeasible, as it would take years. One password try takes approximately 6.25 milliseconds. So in total we would get:
+The password is 5 characters long and CPU runs at 16 MHz, which makes brute-forcing infeasible, as it would take years. One password try takes approximately 62.5 microseconds. So in total we would get:
 
-<img src="https://render.githubusercontent.com/render/math?math=256^5\times 6.25ms = 687194767360s = 21 776.3532 years">
+<img src="https://render.githubusercontent.com/render/math?math=256^5\times 62.5\mu s = 68719476.7s = 2.17 years">
 
 If that doesn't convince you, brute-force is just plain boring. All in all this code, theoreticaly, should work just fine. However this course is all about hardware hacking, so this brings us to the first question...
 
