@@ -4,6 +4,8 @@ This course shows basics of hardware in a completely hands-off way. You only nee
 
 Before we start make sure to download and install the [Logic software from Saleae](https://www.saleae.com/downloads/) and make yourself a cup of tea (or any other beverage of your choice -- it doesn't need to come in a cup!).
 
+> Tip: some of the images may appear to be too small to read. If that's the case then simply right click on them and choose "open image in a new tab" -- the images are usually much larger than github makes you think!
+
 ## Password verification
 
 Our task is simple. We have an Arduino Uno board with a 16MHz CPU. We assume that the memory (including the code running on the device) is inaccessible to the attacker.
@@ -48,6 +50,6 @@ The password is 5 characters long and CPU runs at 16 MHz, which makes brute-forc
 
 If that doesn't convince you, brute-force is just plain boring. All in all this code, theoreticaly, should work just fine. However this course is all about hardware hacking, so this brings us to the first question...
 
-> *What's wrong with this code from the hardware hacking perspective? How can having a physical access to the device make cracking the password easier?*
+What's wrong with this code from the hardware hacking perspective? How can having a physical access to the device make cracking the password easier?
 
 [See the answer on the next page >>>>](timing)
