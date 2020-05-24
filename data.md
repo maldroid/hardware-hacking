@@ -1,5 +1,5 @@
 # Processing the VCD file
-What we are looking for is the time between the last character being sent on Channel 0 and he time first character is being sent on Channel 1. The stop bit is always high, so the last character will always be denoted in the file with `1!` and the start bit is always low so the first character sent on Channel 1 will be denoted with `0"`. So effectively we're looking for all the time differences between `1!` and `0"`.
+What we are looking for is the time between the last character being sent on Channel 0 and the time the first character is being sent on Channel 1. The stop bit is always high, so the last character will always be denoted in the file with `1!` and the start bit is always low so the first character sent on Channel 1 will be denoted with `0"`. So effectively we're looking for all the time differences between `1!` and `0"`.
 
 Now, if you're feeling adventurous go ahead and write a script that will calculate these time differences. You have all the necessary information: file format and what we're looking for. So go. Try it. It's fun. I promise.
 
@@ -56,7 +56,7 @@ This code goes over every key and calculates the average value. Then it sorts al
 ```
 
 So, on average, the password starting with `p` took the longest time to validate. Is this really the first character of the password? Well, we can also imply that from the data we see. Let's take a look at the differences between the times it takes to validate different guesses:
-T
+
 Byte | Time to validate | Time difference 
 -----|------------------|-----------------
 112 | 58088 ns | ---
@@ -67,7 +67,7 @@ Byte | Time to validate | Time difference
 
 You can see that the values other than 121 (`p`) are clustered together more tightly and `p` is an outlier (it takes 608 ns more to validate it than to validate the second password guess on the list). This supports our assumption that `p` is the first character of the password. Well, this and that code we uploaded to Arduino Uno which specified that the password was `passw`...
 
-Either way, we managed to get the first letter of the password. Now that we know the first one, we can repeat that process for the second letter (using `p` and the first and filling the last 3 charcters with zeros) and so on until we have the whole password.
+Either way, we managed to get the first letter of the password. Now that we know the first one, we can repeat that process for the second letter (using `p` and the first and filling the last 3 characters with zeros) and so on until we have the whole password.
 
 The remaining question is: how does that speed up the password brute-forcing?
 
