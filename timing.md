@@ -1,6 +1,6 @@
 # Timing is key
 
-There's a difference in time it takes to validate the password based on the number of characters that are correct. Take a look at step-by-step `checkPass` verification of two password tries below -- one with all characters incorrect and one with one correct character.
+The `checkPass` method takes longer to validate the password if some characters are correct. Take a look at step-by-step `checkPass` verification of two password guesses below -- one with all characters incorrect and one with one correct character.
 
 `xxxxx` | `pxxxx`
 ------------ | -------------
@@ -47,13 +47,13 @@ Terminal ready
 Password:
 ```
 
-We now have access to the board, but how to measure the time it takes to validate the password? We can create a script which takes time mesurements before we send out a password guess and the time we receive the response, but there's so much latency in that communication that the results will be useless.
+We now have access to the board with our code running on it. How will we measure the time it takes to validate the password? We can create a script which takes time measurements when we send out a password guess and when we receive the response, but there's so much latency in that communication that the results will be useless.
 
-Instead, we can use a logic analyser from [Saleae](https://www.saleae.com/). Logic analyser is a piece of hardware which can intercept and record the digital communication from the board. ATMega328 CPU uses serial communication (as does USB) which means that there are two wires - one to send the data (TX) and one to receive the data (RX). These are exposed on the first two pins of the ATMega328 CPU.
+Instead, we can use a logic analyser from [Saleae](https://www.saleae.com/). Logic analyser is a piece of hardware which can intercept and record the digital communication from the board. ATMega328 CPU uses serial communication, as does the USB ("S" stands for "serial"). It means that there are two wires -- one to send the data (TX) and one to receive the data (RX). These are exposed through two pins of the ATMega328 CPU.
 
 ![Annotated ATMega CPU](assets/atmega_annotated.jpg)
 
-These pins are exposed on the board in the upper left corner (see the pictures above). They are even convieniently signed with "RX" and "TX". This is the same data that is sent through USB to a serial terminal running on the computer. Let's connect logic analyser to these two pins and record the whole communication.
+These pins are exposed on the board in the upper right corner (see the pictures of the board above). They are even convieniently labeled with "RX" and "TX". This is the same data that is sent through USB to a serial terminal running on the computer. Let's connect logic analyser to these two pins and record the whole communication.
 
 
 [On to the Logic software to process our data dump! >>>>](dump)
