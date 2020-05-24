@@ -1,7 +1,7 @@
 # Performing a timing attack
-There are two password gueses in our capture file. First, create a new Analyser for Channel 0, same way you did it for Channel 1. Now you can see that the two password guesses are `xxxxx` and `pxxxx`. The first character of the second guess is correct so it should take longer to validate that guess.
+First, create a new Analyser for Channel 0, same way you did it for Channel 1. Now you can see that there are two password guesses in our capture and they are `xxxxx` and `pxxxx`. The first character of the second guess is correct so it should take longer to validate that guess.
 
-To find out if that's the case we need to measure the time it takes between the end of transmission of the last character on Channel 0 (the one where we send the password guess to the board) and the beginning of the `Incorrect password!` response on Channel 1. For that we need to zoom in (by scrolling) on the second "dip" (data transmission) on Channel 1. Now go to the "Annotations" box on the right and click on `A1`. Snap the timing marker to the end of the transmission on Channel 0 (where the channel goes high). Click on `A2` and snap it to the beginning of the trasmission on Channel 1 (where the channel goes low).
+To find out if that's the case we need to measure the time it takes between the end of transmission of the last character on Channel 0 (the one where we send the password guess to the board) and the beginning of the `Incorrect password!` response on Channel 1. For that we need to zoom in (by scrolling) on the second "dip" (data transmission) on Channel 1. Now go to the "Annotations" box on the right and click on `A1`. Snap the timing marker to the end of the transmission on Channel 0 (where the channel goes high). Click on `A2` and snap it to the beginning of the transmission on Channel 1 (where the channel goes low).
 
 Your screen should look similar to the screenshot below.
 
@@ -11,7 +11,7 @@ You can see that it took 62.4 microseconds to validate the password in this inst
 
 Here's a thing about timing attacks and CPUs. CPUs have lots of stuff to do, they are very busy, even if they are idle. What happens is that the difference between one correct password character and no correct password characters is so small that sometimes it just isn't there. That's the case here and that's what we learned the hard way. So... is there a way to make the attack more reliable?
 
-Well, if there's a random delay at play the best thing would be to just gather many, many samples and average the out. That's what we will be doing. I wrote a simple Python script which tests different password.
+Well, if there's a random delay at play the best thing would be to just gather many, many samples and average it out. That's what we will be doing. I wrote a simple Python script which tests different password.
 
 ```
 from __future__ import print_function
@@ -56,8 +56,8 @@ $enddefinitions $end
 0!
 ```
 
-It starts with a preamble which specifies the granuality of timestamps (1 nanosecond) and the definitions of channels or "wires" (Channel 0 will be using exclamation point and Channel 1 will be using a quote). Then each line starts with either a hash (`#`) which means that it contains a timestamp or a value and a channel character (`1!` - "1" on Channel 0). This signifies that the value on some wire has changed to a different one. For example `1"` means that the value has changed from `0` to `1` on wire `"`, which is Channel 1.
+It starts with a preamble which specifies the granularity of timestamps (1 nanosecond) and the definitions of channels or "wires" (Channel 0 will be using exclamation point and Channel 1 will be using a quote). Then each line starts with either a hash (`#`) which means that it contains a timestamp or a value and a channel character (`1!` - "1" on Channel 0). This signifies that the value on some wire has changed to a different one. For example `1"` means that the value has changed from `0` to `1` on wire `"`, which is Channel 1.
 
-[You can downoload the VCD file with our capture from here](assets/password_tries_100.vcd.zip). Unzip it and take a look. The next step is to automatically process the data so that we can figure out the first characterof the password.
+[You can downoload the VCD file with our capture from here](assets/password_tries_100.vcd.zip). Unzip it and take a look. The next step is to automatically process the data so that we can figure out the first character of the password.
 
 [Processing timing attack data >>>>](data)
