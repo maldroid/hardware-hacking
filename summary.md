@@ -25,7 +25,10 @@ When we were glitching the CPU by turning the power off for a very short amount 
 In almost all instances mitigating these kinds of the attacks requires a combination of both hardware and software techniques. For example if you want to protect against the fault injection you can check the password twice instead of once, mitigating the single point of failure. You can also add a second chip which monitors the voltage and if drops below a certain level, even for a very short amount of time, the chip will power the CPU down.
 
 ## Are the attacks important? You have to have access to the hardware, right?
+Yes, you ave to have access to the hardware. So, have you ever left your laptop unattended in a hotel room?
 
-**Thank you for following along and staying until the end!**
+That is all! **Thank you for following along and staying until the end!**
+
+If you still have some questions left click below.
 
 [Frequently Asked Questions (and answers to them) >>>>](faq)
