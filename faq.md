@@ -20,5 +20,10 @@ That's great! You should have all the code and the instructions covered in this 
 ## This is terrifying.
 Don't worry, there are people who are researching IT security and making the world a safer place. Making that research universally accessible actually is useful for the overall state of the security, as it keeps everyone aware and alert.
 
+## Did you manage to brick the Arduino during the workshops?
+No! The worst thing that happened quite a few times is that during the power glitching workshop someone managed to glitch the bootloader and the bootloader had to be re-burned onto a chip. It's a bit of a hassle (you need two Arduino boards connected in a specific way) but nothing too hard to do.
+
+What I did manage to do is break one of the ATMega328 pins off while setting up the scene for the photos. Fortunately rs-online has free overight delivery.
+
 ## I still have questions.
 Feel free to ask them on my Twitter: [@maldr0id](http://twitter.com/maldr0id). Thank you and enjoy your day!
