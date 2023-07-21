@@ -26,6 +26,10 @@ bool checkPass(String buffer) {
   return true;
 }
 
+void setup() {
+  Serial.begin(115200);
+}
+
 void loop() {
   Serial.print("Password:");
   char pass[PASSWORD.length()];
