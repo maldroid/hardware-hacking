@@ -65,4 +65,4 @@ If you now click on the gear next to the `Async serial` analyser and choose `Edi
 
 Now that we now everything there is to know about the serial protocol (ok, not EVERYTHING, but more than we did) it's time to actually look at the password check time measurement (remember that part?)
 
-[Construct a timing attack >>>>](attack)
+[Construct a timing attack >>>>](attack.md)
